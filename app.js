@@ -22,7 +22,8 @@ const usuarios =[{
 
 }]
 app.get("/",(req,res)=>{
-    res.json({mensagem:"Hello Word"})
+    let idade =String(cadastro.conjuge[1].idade);
+    res.send({idade})
 })
 app.get("/usuarios",(req,res)=>{
     res.send(usuarios)
