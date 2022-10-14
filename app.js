@@ -25,8 +25,9 @@ app.get("/",(req,res)=>{
     let idade =String(cadastro.conjuge[1].idade);
     res.send({idade})
 })
-app.get("/usuarios",(req,res)=>{
-    res.send(usuarios)
+app.get("/usuarios/:id",(req,res)=>{
+    const id=req.params.id;
+    res.send(usuarios[2])
 })
 
 module.exports = app;
