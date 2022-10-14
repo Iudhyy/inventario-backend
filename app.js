@@ -22,8 +22,7 @@ const usuarios =[{
 
 }]
 app.get("/",(req,res)=>{
-    let idade =String(cadastro.conjuge[1].idade);
-    res.send({idade})
+    res.send(cadastro.cursos[0])
 })
 app.get("/usuarios/:id",(req,res)=>{
     const id=req.params.id;
