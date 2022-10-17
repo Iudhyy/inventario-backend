@@ -21,12 +21,19 @@ const usuarios =[{
     nome:"Raimundo",idade:70
 
 }]
-app.get("/",(req,res)=>{
+app.get("/cadastro",(req,res)=>{
     res.send(cadastro.cursos[0])
 })
 app.get("/usuarios/:id",(req,res)=>{
     const id=req.params.id;
     res.send(usuarios[2])
 })
-
+app.get("/calcular",(req,res)=>{
+    let novoarray = [];
+    usuarios.map(linha=>{
+        novoarray.push(
+            {nome:linha.nome,idade:linha.idade+10}
+        )
+    })
+})
 module.exports = app;
