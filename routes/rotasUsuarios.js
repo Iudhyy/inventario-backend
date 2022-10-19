@@ -74,6 +74,7 @@ router.get("/:id",(req,res)=>{
 })
 router.post("/",(req,res)=>{
 const{id,nome,email,senha}=req.body;
+ res.send(dados)
 })
 
 module.exports = router;
