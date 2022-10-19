@@ -72,5 +72,8 @@ router.get("/:id",(req,res)=>{
     })
     res.send(novoarray);
 })
+router.post("/",(req,res)=>{
+const{id,nome,email,senha}=req.body;
+})
 
 module.exports = router;
