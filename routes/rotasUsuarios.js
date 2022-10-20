@@ -1,5 +1,5 @@
 const express = require("express");
-const req = require("express/lib/request");
+// const req = require("express/lib/request");
 const { routes } = require("../app");
 const router = express.Router();
 
@@ -67,7 +67,7 @@ router.get("/:id",(req,res)=>{
     let novoarray=[];
     novoarray=usuarios.filter(linha=>{
         if(linha.id==id){
-            return linha.nome;
+            return linha;
         }
     })
     res.send(novoarray);
