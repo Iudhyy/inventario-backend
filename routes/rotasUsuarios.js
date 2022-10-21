@@ -73,12 +73,12 @@ router.get("/:id",(req,res)=>{
     res.send(novoarray);
 })
 router.post("/",(req,res)=>{
-    const {nome,email,senha} = req.body;
-    usuarios.unshift(
+    const {id,nome,email,senha} = req.body;
+    usuarios.push(
         {
-            id:0,
-            nome:"Derick",
-            email:"derick@gmail.com",
+            id:id,
+            nome:nome,
+            email:email,
             senha:"123"
         }
 
@@ -86,6 +86,6 @@ router.post("/",(req,res)=>{
     // const dados= req.body.dados[0].rg;
 
     res.status(200).send({lista:usuarios});
-})
+});
 
 module.exports = router;
