@@ -74,9 +74,18 @@ router.get("/:id",(req,res)=>{
 })
 router.post("/",(req,res)=>{
     const {nome,email,senha} = req.body;
+    usuarios.unshift(
+        {
+            id:0,
+            nome:"Derick",
+            email:"derick@gmail.com",
+            senha:"123"
+        }
+
+    )
     // const dados= req.body.dados[0].rg;
 
-    res.status(200).send({dados:dados});
+    res.status(200).send({lista:usuarios});
 })
 
 module.exports = router;
