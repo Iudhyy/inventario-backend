@@ -1,4 +1,5 @@
 const express = require("express");
+const { send } = require("express/lib/response");
 // const req = require("express/lib/request");
 const { routes } = require("../app");
 const router = express.Router();
@@ -74,6 +75,11 @@ router.get("/:id",(req,res)=>{
 })
 router.post("/",(req,res)=>{
     const {id,nome,email,senha} = req.body;
+    if(nome.lenght<=3){
+        res.status(204).send(
+            {mensagem:'campo nome é menor que 3 caracteres'}
+        )
+    } else{
     usuarios.push(
         {
             id:id,
@@ -83,9 +89,12 @@ router.post("/",(req,res)=>{
         }
 
     )
-    // const dados= req.body.dados[0].rg;
+        
 
-    res.status(200).send({lista:usuarios});
+    res.status(200).send({
+        mensagem:'Cadastro salvo com sucesso'
+    })
+}
 });
 
 module.exports = router;
