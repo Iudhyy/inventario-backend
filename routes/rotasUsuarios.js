@@ -97,8 +97,9 @@ router.post("/",(req,res)=>{
 }
 });
 router.delete("/",(req,res)=>{
+    let novoarray=[];
     const {id} = req.body;
-    usuarios.filter(linha=>{
+    novoarray=usuarios.filter(linha=>{
         return linha.id!==id
     })
     res.status(200).send(
