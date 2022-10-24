@@ -97,6 +97,13 @@ router.post("/",(req,res)=>{
 }
 });
 router.delete("/",(req,res)=>{
+    const {id} = req.body;
+    usuarios.filter(linha=>{
+        return linha.id!==id
+    })
+    res.status(200).send(
+        novoarray
+    )
     
 })
 
