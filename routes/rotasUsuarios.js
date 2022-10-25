@@ -112,7 +112,7 @@ router.patch("/",(req,res)=>{
     const {nome,email,senha,id} = req.body;
     novoarray=usuarios.filter(linha=>{
         if(linha.id==id){
-            return   {
+            return{
                 id:id,
                 nome:nome,
                 email:email,
