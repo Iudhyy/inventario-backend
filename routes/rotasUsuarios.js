@@ -108,7 +108,7 @@ router.delete("/",(req,res)=>{
     
 });
 router.patch("/",(req,res)=>{
-    const novoarray=[];
+    let novoarray=[];
     const {nome,email,senha,id} = req.body;
     novoarray=usuarios.filter(linha=>{
         if(linha.id==id){
