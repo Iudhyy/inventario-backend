@@ -106,6 +106,22 @@ router.delete("/",(req,res)=>{
         novoarray
     )
     
+});
+router.patch("/",(req,res)=>{
+    const novoarray=[];
+    const {nome,email,senha,id} = req.body;
+    novoarray=usuarios.filter(linha=>{
+        if(linha.id==id){
+            return   {
+                id:id,
+                nome:nome,
+                email:email,
+                senha:senha
+            }
+        }else{
+            return linha;
+        }
+    })
 })
 
 module.exports = router;
