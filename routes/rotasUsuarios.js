@@ -12,7 +12,7 @@ function validaremail(){
 }
 function verificarduplicidade(email){
     let dadosnovos = [];
-    dadosnovos = dados.filter(item=>item.email==email);
+    dadosnovos = usuarios.filter(item=>item.email==email);
     if(dadosnovos.length>0){
         return true
     }
@@ -137,6 +137,12 @@ router.post("/",(req,res)=>{
     i++;
     errorMsg.push(
         {mensagem:'email invalido'}
+    )
+   }
+   if(verificarduplicidade(email)){
+    i++;
+    errorMsg.push(
+        {mensagem:'email ja cadastrado'}
     )
    }
   
