@@ -133,6 +133,12 @@ router.post("/",(req,res)=>{
         {mensagem:'campo nome menor que 3 caracteres'}
     )
    }
+   if(!validaremail(email)){
+    i++;
+    errorMsg.push(
+        {mensagem:'email invalido'}
+    )
+   }
   
       
        
