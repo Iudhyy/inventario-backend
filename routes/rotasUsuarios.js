@@ -4,6 +4,20 @@ const { send } = require("express/lib/response");
 const { routes } = require("../app");
 const router = express.Router();
 
+function validaremail(){
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+   
+
+}
+function verificarduplicidade(email){
+    let dadosnovos = [];
+    dadosnovos = dados.filter(item=>item.email==email);
+    if(dadosnovos.length>0){
+        return true
+    }
+        return false;
+}
 
 const usuarios =[
     {
@@ -107,21 +121,42 @@ router.delete("/",(req,res)=>{
     )
     
 });
-router.patch("/",(req,res)=>{
-    let novoarray=[];
-    const {nome,email,senha,id} = req.body;
-    novoarray=usuarios.filter(linha=>{
-        if(linha.id==id){
-            return{
-                id:id,
-                nome:nome,
-                email:email,
-                senha:senha
-            }
-        }else{
-            return linha;
-        }
-    })
+router.post("/",(req,res)=>{
+   const {id,nome,email,senha}=req.body;
+   e.preventDefault();
+
+   let i=0;
+   let errorMsg=[];
+   if(nome.lenght<=3){
+    i++;
+    errorMsg.push(
+        {mensagem:'campo nome menor que 3 caracteres'}
+    )
+   }
+  
+      
+       
+   if(i==0){
+       usuarios.push (
+           {
+               id:id,
+               nome:nome,
+               email:email,
+               senha:senha
+           }
+       )
+       res.status(201).send(
+        {mensagem:'cadastro salvo com sucesso'}
+    )
+   }else{
+       res.status(406).send(
+           {mensagem:errorMsg}
+       )
+   }
+  
+   
+  
+   
 })
 
 module.exports = router;
