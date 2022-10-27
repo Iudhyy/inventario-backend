@@ -87,29 +87,7 @@ router.get("/:id",(req,res)=>{
     })
     res.send(novoarray);
 })
-router.post("/",(req,res)=>{
-    const {id,nome,email,senha} = req.body;
-    if(nome.lenght<=3){
-        res.status(204).send(
-            {mensagem:'campo nome é menor que 3 caracteres'}
-        )
-    } else{
-    usuarios.push(
-        {
-            id:id,
-            nome:nome,
-            email:email,
-            senha:"123"
-        }
 
-    )
-        
-
-    res.status(200).send({
-        mensagem:'Cadastro salvo com sucesso'
-    })
-}
-});
 router.delete("/",(req,res)=>{
     let novoarray=[];
     const {id} = req.body;
@@ -145,6 +123,14 @@ router.post("/",(req,res)=>{
         {mensagem:'email ja cadastrado'}
     )
    }
+   if(senha.length<3){
+    errorMsg.push("Campo senha tem menos de 3 caracteres\n");
+    i++;
+}
+else if(senha!==confirmar){
+    errorMsg.push("Senha e confirmação não conferem\n");
+    i++;
+}
   
       
        
