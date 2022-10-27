@@ -1,0 +1,142 @@
+const express = require("express");
+const { send } = require("express/lib/response");
+// const req = require("express/lib/request");
+const { routes } = require("../app");
+const router = express.Router();
+
+
+
+
+const empresa =[
+    {
+       id:11,
+       nome:"dddddd",
+       responsavel:"derek",
+       contato:"992382334"
+    },
+    {
+        id:12,
+       nome:"iiiiii",
+       responsavel:"iudhy",
+       contato:"992556611"
+    },
+    {
+        id:13,
+       nome:"wwwww",
+       responsavel:"willian",
+       contato:"992444111"
+    },
+    {
+       id:14,
+       nome:"bbbbb",
+       responsavel:"bispo",
+       contato:"992758822"
+    },
+    {
+        id:15,
+       nome:"eeeee",
+       responsavel:"wesley",
+       contato:"992457889"
+    },
+    {
+        id:16,
+       nome:"rrrrrr",
+       responsavel:"raimundo",
+       contato:"992235478"
+    },
+    {
+        id:17,
+       nome:"ggggg",
+       responsavel:"guilherme",
+       contato:"992745896"
+    },
+    {
+        id:18,
+       nome:"aaaaa",
+       responsavel:"wallyson",
+       contato:"992371957"
+    },
+    
+  
+]
+    
+router.get("/empresa",(req,res)=>{
+    
+    res.send(empresa);
+})
+router.get("/:id",(req,res)=>{
+    const id=req.params.id; 
+
+    let novoarray=[];
+    novoarray=empresa.filter(linha=>{
+        if(linha.id==id){
+            return linha;
+        }
+    })
+    res.send(novoarray);
+})
+
+router.delete("/empresa",(req,res)=>{
+    let novoarray=[];
+    const {id} = req.body;
+    novoarray=empresa.filter(linha=>{
+        return linha.id!==id
+    })
+    res.status(200).send(
+        novoarray
+    )
+    
+});
+router.post("/",(req,res)=>{
+   const {id,nome,responsavel,contato}=req.body;
+   e.preventDefault();
+
+   let i=0;
+   let errorMsg=[];
+   if(nome.length<3){
+    i++;
+    errorMsg.push(
+        {mensagem:'campo nome tem menos de 3 caracteres'}
+    );
+    
+}
+if(responsavel.length<3){
+    i++;
+    errorMsg.push(
+        {mensagem:'campo nome tem menos de 6 caracteres'}
+    );
+   
+}
+if(contato.length<9){
+    i++;
+    errorMsg.push(
+        {mensagem:'campo nome tem menos de 9 digitos'});
+    
+}
+  
+  
+       
+   if(i==0){
+       empresa.push (
+           {
+               id:id,
+               nome:nome,
+               responsavel:responsavel,
+               contato:contato
+           }
+       )
+       res.status(201).send(
+        {mensagem:'cadastro salvo com sucesso'}
+    )
+   }else{
+       res.status(406).send(
+           {mensagem:errorMsg}
+       )
+   }
+  
+   
+  
+   
+})
+
+module.exports = router;
