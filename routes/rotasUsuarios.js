@@ -1,7 +1,8 @@
 const express = require("express");
-const { send } = require("express/lib/response");
-// const req = require("express/lib/request");
-const { routes } = require("../app");
+// const { send } = require("express/lib/response");
+const req = require("express/lib/request");
+const res = require("express/lib/request");
+// const { routes } = require("../app");
 const router = express.Router();
 
 function validaremail(){
@@ -88,17 +89,7 @@ router.get("/:id",(req,res)=>{
     res.send(novoarray);
 })
 
-router.delete("/",(req,res)=>{
-    let novoarray=[];
-    const {id} = req.body;
-    novoarray=usuarios.filter(linha=>{
-        return linha.id!==id
-    })
-    res.status(200).send(
-        novoarray
-    )
-    
-});
+
 router.post("/",(req,res)=>{
    const {id,nome,email,senha}=req.body;
    e.preventDefault();
@@ -156,5 +147,36 @@ else if(senha!==confirmar){
   
    
 })
+router.delete("/",(req,res)=>{
+    let novoarray=[];
+    const {id} = req.body;
+    novoarray=usuarios.filter(linha=>{
+     if(linha.id!==id){
+       return linha;
+     }
+       
+    })
+    res.status(200).send(
+       novoarray
+    )
+   })
+   
+   router.patch("/",(req,res)=>{
+    let novoarray=[];
+     const {nome,email,senha,id} = req.body;
+    novoarray=us
+    usuarios.filter(linha=>{
+       if(linha.id==id){
+           return{
+                       id:id,
+                       nome:nome,
+                       email: email,
+                       senha: senha
+                   }
+       }else{
+           return linha;
+       }
+    })
+   })
 
 module.exports = router;

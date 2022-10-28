@@ -1,50 +1,50 @@
 const express = require("express");
-const { send } = require("express/lib/response");
-// const req = require("express/lib/request");
-const { routes } = require("../app");
+const req = require("express/lib/request");
+const res = require("express/lib/request");
 const router = express.Router();
+
 
 
 const patrimonios =[
     {
         id:1,
         nome:"Derick",
-       dataaquisicao:(Date)
+       dataaquisicao:"20/10/2022"
     },
     {
         id:2,
         nome:"Iudhy",
-       dataaquisicao:(Date)
+        dataaquisicao:"21/10/2022"
     },
     {
         id:3,
         nome:"willian",
-       dataaquisicao:(Date)
+        dataaquisicao:"22/10/2022"
     },
     {
         id:4,
         nome:"Bispo",
-       dataaquisicao:(Date)
+        dataaquisicao:"23/10/2022"
     },
     {
         id:5,
         nome:"Wesley",
-       dataaquisicao:(Date)
+        dataaquisicao:"24/10/2022"
     },
     {
         id:6,
         nome:"Raimundo",
-       dataaquisicao:(Date)
+        dataaquisicao:"25/10/2022"
     },
     {
         id:7,
         nome:"Guilherme",
-       dataaquisicao:(Date)
+        dataaquisicao:"26/10/2022"
     },
     {
         id:8,
         nome:"Walyson",
-       dataaquisicao:(Date)
+        dataaquisicao:"27/10/2022"
     },
     
   
@@ -78,8 +78,7 @@ router.delete("/",(req,res)=>{
     
 });
 router.post("/",(req,res)=>{
-   const {id,nome,email,senha}=req.body;
-   e.preventDefault();
+   const {id,nome,dataaquisicao}=req.body;
 
    let i=0;
    let errorMsg=[];
@@ -99,7 +98,6 @@ router.post("/",(req,res)=>{
                id:id,
                nome:nome,
                dataaquisicao:dataaquisicao
-               
            }
        )
        res.status(201).send(

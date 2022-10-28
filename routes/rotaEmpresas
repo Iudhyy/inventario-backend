@@ -1,6 +1,7 @@
 const express = require("express");
+const req = require("express/lib/request");
+const res = require("express/lib/request");
 const router = express.Router();
-
 
 
 
@@ -57,7 +58,7 @@ const empresa =[
   
 ]
     
-router.get("/empresa",(req,res)=>{
+router.get("/",(req,res)=>{
     
     res.send(empresa);
 })
@@ -73,7 +74,7 @@ router.get("/:id",(req,res)=>{
     res.send(novoarray);
 })
 
-router.delete("/empresa",(req,res)=>{
+router.delete("/",(req,res)=>{
     let novoarray=[];
     const {id} = req.body;
     novoarray=empresa.filter(linha=>{
@@ -135,5 +136,6 @@ if(contato.length<9){
   
    
 })
+
 
 module.exports = router;
