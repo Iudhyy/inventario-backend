@@ -1,7 +1,7 @@
 const express = require("express");
 const { send } = require("express/lib/response");
 // const req = require("express/lib/request");
-const { routes } = require("../app");
+// const { routes } = require("../app");
 const router = express.Router();
 
 
@@ -89,7 +89,7 @@ router.delete("/empresa",(req,res)=>{
 });
 router.post("/",(req,res)=>{
    const {id,nome,responsavel,contato}=req.body;
-   e.preventDefault();
+//    e.preventDefault();
 
    let i=0;
    let errorMsg=[];
