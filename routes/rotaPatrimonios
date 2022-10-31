@@ -51,11 +51,16 @@ const patrimonios =[
 ]
     
 router.get("/",(req,res)=>{
+    res.status(200).send(
+        {
+            mensagem:"Lista de Todos os patrimônios",
+            patrimonios:patrimonios
+        }
+    )
     
-    res.send(patrimonios);
 })
 router.get("/:id",(req,res)=>{
-    const id=req.params.id; 
+    const {id}=req.params; 
 
     let novoarray=[];
     novoarray=patrimonios.filter(linha=>{
