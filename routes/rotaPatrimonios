@@ -68,7 +68,7 @@ router.get("/:id",(req,res)=>{
             return linha;
         }
     })
-    res.send(novoarray);
+    return res.status(200).send(novoarray);
 })
 
 router.delete("/",(req,res)=>{

@@ -19,7 +19,7 @@ const setores =[
         id:3,
         nome:"willian"
     },
-    {
+    { 
         id:4,
         nome:"Bispo"
     },

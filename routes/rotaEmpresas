@@ -87,7 +87,7 @@ router.delete("/",(req,res)=>{
 });
 router.post("/",(req,res)=>{
    const {id,nome,responsavel,contato}=req.body;
-//    e.preventDefault();
+
 
    let i=0;
    let errorMsg=[];
