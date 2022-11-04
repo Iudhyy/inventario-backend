@@ -1,117 +1,24 @@
 const express = require("express");
-const req = require("express/lib/request");
-const res = require("express/lib/request");
 const router = express.Router();
+const usuarios=require('./usuario');
 
 
-
-const lotacao =[
-    {
-        id:1,
-        nome:"Derick",
-       dataaquisicao:"20/10/2022"
-    },
-    {
-        id:2,
-        nome:"Iudhy",
-        dataaquisicao:"21/10/2022"
-    },
-    {
-        id:3,
-        nome:"willian",
-        dataaquisicao:"22/10/2022"
-    },
-    {
-        id:4,
-        nome:"Bispo",
-        dataaquisicao:"23/10/2022"
-    },
-    {
-        id:5,
-        nome:"Wesley",
-        dataaquisicao:"24/10/2022"
-    },
-    {
-        id:6,
-        nome:"Raimundo",
-        dataaquisicao:"25/10/2022"
-    },
-    {
-        id:7,
-        nome:"Guilherme",
-        dataaquisicao:"26/10/2022"
-    },
-    {
-        id:8,
-        nome:"Walyson",
-        dataaquisicao:"27/10/2022"
-    },
-    
-  
-]
-    
 router.get("/",(req,res)=>{
+   res.send(usuarios)
     
-    res.send(lotacao);
 })
 router.get("/:id",(req,res)=>{
-    const id=req.params.id; 
-
-    let novoarray=[];
-    novoarray=lotacao.filter(linha=>{
-        if(linha.id==id){
-            return linha;
-        }
-    })
-    res.send(novoarray);
-})
-
-router.delete("/",(req,res)=>{
-    let novoarray=[];
-    const {id} = req.body;
-    novoarray=lotacao.filter(linha=>{
-        return linha.id!==id
-    })
-    res.status(200).send(
-        novoarray
-    )
-    
-});
+   
+     
+ })
 router.post("/",(req,res)=>{
-   const {id,nome,dataaquisicao}=req.body;
+     
+ })
+ router.patch("/",(req,res)=>{
+     
+ })
+ router.delete("/:id",(req,res)=>{
+     
+ })
 
-   let i=0;
-   let errorMsg=[];
-   if(nome.lenght<=3){
-    i++;
-    errorMsg.push(
-        {mensagem:'campo nome menor que 3 caracteres'}
-    )
-   }
-  
-  
-      
-       
-   if(i==0){
-       lotacao.push (
-           {
-               id:id,
-               nome:nome,
-               dataaquisicao:dataaquisicao
-           }
-       )
-       res.status(201).send(
-        {mensagem:'cadastro salvo com sucesso'}
-    )
-   }else{
-       res.status(406).send(
-           {mensagem:errorMsg}
-       )
-   }
-  
-   
-  
-   
-})
-
-module.exports = router;
+ module.exports = router;

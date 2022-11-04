@@ -1,0 +1,52 @@
+const usuarios =[
+    {
+        id:1,
+        nome:"Derick",
+        email:"derick@gmail.com",
+        senha:"123"
+    },
+    {
+        id:2,
+        nome:"Iudhy",
+        email:"iudhy@gmail.com",
+        senha:"123"
+    },
+    {
+        id:3,
+        nome:"Willian",
+        email:"willian@gmail.com",
+        senha:"123"
+    },
+    {
+        id:4,
+        nome:"Bispo",
+        email:"bispo@gmail.com",
+        senha:"123"
+    },
+    {
+        id:5,
+        nome:"Wesley",
+        email:"wesley@gmail.com",
+        senha:"123"
+    },
+    {
+        id:6,
+        nome:"Raimundo",
+        email:"raimundo@gmail.com",
+        senha:"123"
+    },
+    {
+        id:7,
+        nome:"Guilherme",
+        email:"guilherme@gmail.com",
+        senha:"123"
+    },
+    {
+        id:8,
+        nome:"Wallysson",
+        email:"Wallysson@gmail.com",
+        senha:"123"
+    },
+    
+  
+]
