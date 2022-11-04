@@ -1,10 +1,29 @@
 const express = require("express");
 const router = express.Router();
 const usuarios=require('./usuario');
+const empresa=require('./empresa');
+const patrimonio=require('./patrimonio');
+const setores=require('./setor');
 
+const lotacao =[
+   {
+      "id":1,
+      "patrimonio":2,
+      "setorid":3,
+      "empresaid":1,
+      "dataentrada":"11-04-2022"
+   },
+   {
+      "id":2,
+      "patrimonio":3,
+      "setorid":2,
+      "empresaid":3,
+      "dataentrada":"11-04-2022"
+   }
+]
 
 router.get("/",(req,res)=>{
-   res.send(usuarios)
+   res.status(200).send(usuarios);
     
 })
 router.get("/:id",(req,res)=>{
