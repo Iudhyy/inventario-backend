@@ -10,6 +10,7 @@ const lotacao =[
       "id":1,
       "patrimonio":2,
       "setorid":3,
+      "usuarioid":2,
       "empresaid":1,
       "dataentrada":"11-04-2022"
    },
@@ -17,13 +18,35 @@ const lotacao =[
       "id":2,
       "patrimonio":3,
       "setorid":2,
+      "usuarioid":1,
       "empresaid":3,
       "dataentrada":"11-04-2022"
    }
 ]
+function mostrarUsuario(id){
+   const usu = usuarios.filter((linha)=>{
+      if(linha.id===id){
+         returnlinha.nome
+      }
+   })
+   return nome;
+}
 
 router.get("/",(req,res)=>{
-   res.status(200).send(usuarios);
+   const novoarray = [];
+   novoarray=lotacao.filter((linha)=>{
+      return(
+         { 
+               "id":linha.id,
+               "patrimonio":linha.patrimonio,
+               "setorid":linha.setorid,
+               "usuarioid":linha.usuarioid,
+               "empresaid":mostrarUsuario(linha.usuarioid),
+               "dataentrada":linha.dataentrada
+         }
+      )
+   })
+   res.status(200).send(novoarray);
     
 })
 router.get("/:id",(req,res)=>{
