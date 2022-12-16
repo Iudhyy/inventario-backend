@@ -4,6 +4,7 @@ const req = require("express/lib/request");
 const res = require("express/lib/request");
 // const { routes } = require("../app");
 const router = express.Router();
+const mysql = require("../mysql").pool;
 
 function validaremail(){
     var re = /\S+@\S+\.\S+/;
@@ -73,6 +74,40 @@ const usuarios =[
   
 ]
     
+router.get('/test', function (req, res){
+    mysql.getConnection((error,conn)=>{
+         conn.query("select* from usuario"),
+         (error,resultado,field)=>{
+             if(error){
+                 return res.status(500).send({
+                     mensagem:error
+                 })
+             }
+             res.status(200).send({
+                 usuario:resultado
+             })
+         }
+    })
+})
+
+router.get('/:id', function(req,res){
+    const id = req.params.id;
+    mysql.getConnection((error,conn)=>{
+        (error,resultado,field)=>{
+            conn.release();
+            if (error){
+                return res.status(500).send({
+                    error:error,
+                    response:null
+                })
+            }
+            res.status(200).send({
+                mensagem: "aqui é a lista de usuarios !!!"
+            })
+        }
+    })
+})
+
 router.get("/",(req,res)=>{
     
     res.send(usuarios);
